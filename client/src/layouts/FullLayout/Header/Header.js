@@ -3,21 +3,23 @@ import {
   AppBar,
   Box,
   Toolbar,
-  Menu,
-  MenuItem,
   Button,
   Avatar,
+  Menu,
+  MenuItem,
   Divider,
   ListItemIcon,
-  Typography
+  Typography,
+  IconButton
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import MenuIcon from '@mui/icons-material/Menu'; // Import the Menu icon
+import { useMediaQuery } from "@mui/material";
 
 const Header = (props) => {
-  
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg")); // Media query for larger screens
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -27,22 +29,29 @@ const Header = (props) => {
   };
 
   const nav = useNavigate();
-
-  
   const userProfile = JSON.parse(localStorage.getItem('profile')) || {};
   const fullName = userProfile.fullName || '';
   const email = userProfile.email || '';
   const schoolId = userProfile.schoolId || '';
-
-  
   const initials = fullName.split(' ').map(name => name.charAt(0).toUpperCase()).join('');
 
   return (
     <AppBar sx={props.sx} elevation={0} className={props.customClass}>
       <Toolbar>
-        {/* Left side content, if any */}
+        {/* Left side content */}
+        {!lgUp && ( // Show the hamburger icon only on mobile screens
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={props.toggleMobileSidebar} // Open the mobile sidebar when clicked
+          >
+            <MenuIcon />
+          </IconButton>
+        )}
+
         <Box flexGrow={1}>
-          
+          {/* Any other content can go here */}
         </Box>
 
         {/* Profile Dropdown */}
@@ -50,7 +59,7 @@ const Header = (props) => {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            ml: 'auto' // Push the avatar to the far right
+            ml: 'auto'
           }}
         >
           <Button

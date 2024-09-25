@@ -104,4 +104,30 @@ public class ProfileImplementation implements ProfileService
         return profile;
     }
 
+    public List<ProfileDTO> listAllProfiles() {
+        return profileRepository
+                .findAll()
+                .stream()
+                .map(profileMapper)
+                .collect(Collectors.toList());
+    }
+
+    public void updateProfile(Long id, Profile request) {
+
+        Profile profile = profileRepository.findById(id).orElseThrow(() -> new ProfileException("Error"));
+
+        profile.setFullName(request.getFullName());
+        profile.setEmail(request.getEmail());
+        profile.setSchoolId(request.getSchoolId());
+
+        if (profile == null){
+            throw new ProfileException("Error");
+        }else {
+            profileRepository.save(profile);
+        }
+    }
+
+    public void deleteById(Long id) {
+        profileRepository.deleteById(id);
+    }
 }

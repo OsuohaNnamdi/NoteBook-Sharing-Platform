@@ -23,39 +23,57 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true); // Show spinner
-
+  
     try {
       const response = await axios.post('http://localhost:8080/api/v1/login', {
         email,
         password
       });
-
+  
       const { profileDTO, token } = response.data;
-      const { accountType, matricNumber: responseMatricNumber } = profileDTO;
-
+      const { accountType } = profileDTO;
+  
+      localStorage.setItem('profile', JSON.stringify(profileDTO));
+      localStorage.setItem('jwtToken', token);
+  
+      // Redirect to appropriate dashboard based on accountType
       switch (accountType) {
         case 'LECTURER':
           localStorage.setItem('TYPE', accountType);
+          Swal.fire({
+            icon: 'success',
+            title: 'Login Successful',
+            text: 'Redirecting to Lecturer Dashboard...',
+          }).then(() => {
+            nav("/lecturer-dashboard");
+            window.location.reload();
+          });
           break;
         case "STUDENT":
           localStorage.setItem('TYPES', accountType);
+          Swal.fire({
+            icon: 'success',
+            title: 'Login Successful',
+            text: 'Redirecting to Student Dashboard...',
+          }).then(() => {
+            nav("/dashboard");
+            window.location.reload();
+          });
+          break;
+        case "ADMIN":
+          localStorage.setItem('TYPESS', accountType);
+          Swal.fire({
+            icon: 'success',
+            title: 'Login Successful',
+            text: 'Redirecting to Admin Dashboard...',
+          }).then(() => {
+            nav("/admin");
+            window.location.reload();
+          });
           break;
         default:
           console.error('Unknown user type:', accountType);
       }
-
-      localStorage.setItem('profile', JSON.stringify(profileDTO));
-      localStorage.setItem('MatricNo', responseMatricNumber);
-      localStorage.setItem('jwtToken', token);
-
-      Swal.fire({
-        icon: 'success',
-        title: 'Login Successful',
-        text: 'Redirecting to home page...',
-      }).then(() => {
-        nav("/");
-        window.location.reload();
-      });
     } catch (error) {
       console.error('Login error', error);
       Swal.fire({
@@ -64,10 +82,10 @@ const LoginPage = () => {
         text: 'Invalid email or password.',
       });
     } finally {
-      setLoading(false); // Hide spinner
+      setLoading(false); 
     }
   };
-
+  
   return (
     <div>
       <Card variant="outlined" sx={{ p: 0 }}>
@@ -101,16 +119,18 @@ const LoginPage = () => {
               onChange={(e) => setPassword(e.target.value)}
               sx={{ mb: 2 }}
             />
-            <Button
-              color="primary"
-              variant="contained"
-              type="submit"
-              disabled={loading} // Disable button while loading
-              sx={{ position: 'relative' }}
-            >
-              {loading && <CircularProgress size={24} sx={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }} />}
-              Login
-            </Button>
+            <Box display="flex" justifyContent="center" alignItems="center" sx={{ mt: 2 }}>
+              <Button
+                color="primary"
+                variant="contained"
+                type="submit"
+                disabled={loading} // Disable button while loading
+                sx={{ position: 'relative', minWidth: 100 }} // Ensures button has some minimum width
+              >
+                {loading && <CircularProgress size={24} sx={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }} />}
+                Login
+              </Button>
+            </Box>
           </form>
         </CardContent>
       </Card>

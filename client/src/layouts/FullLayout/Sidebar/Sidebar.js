@@ -1,50 +1,38 @@
 import React from "react";
-import { useLocation, Link, NavLink } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 import { Box, Drawer, useMediaQuery, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import image from "../Logo/logos.jpeg";
 import Menuitems from "./data";
 
 const Sidebar = (props) => {
-  const [open, setOpen] = React.useState(true);
   const { pathname } = useLocation();
   const pathDirect = pathname;
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
 
-  const handleClick = (index) => {
-    if (open === index) {
-      setOpen((prevopen) => !prevopen);
-    } else {
-      setOpen(index);
-    }
-  };
-
-
-  const userType = localStorage.getItem('TYPE') || localStorage.getItem('TYPES') || 'guest';
+  const userType = localStorage.getItem('TYPE') || localStorage.getItem('TYPES') || localStorage.getItem('TYPESS') || 'guest';
   const menuItems = Menuitems[userType.toLowerCase()] || Menuitems.guest;
-  console.log(localStorage.getItem('TYPES'))
-  console.log(localStorage.getItem('TYPE'))
-
 
   const SidebarContent = (
     <Box sx={{ p: 3, height: "calc(100vh - 40px)" }}>
-      <Link to="/">
+      <NavLink to="/">
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <img src={image}
-          alt="Logo" 
-          id="logo" 
-          style={{
-           width: '230px',  
-           height: '170px',  
-          }} />
+          <img 
+            src={image} 
+            alt="Logo" 
+            id="logo" 
+            style={{
+              width: '230px',  
+              height: '170px',  
+            }} 
+          />
         </Box>
-      </Link>
+      </NavLink>
 
       <Box>
         <List sx={{ mt: 4 }}>
           {menuItems.map((item, index) => (
             <List component="li" disablePadding key={item.title}>
               <ListItem
-                onClick={() => handleClick(index)}
                 button
                 component={NavLink}
                 to={item.href}
@@ -55,6 +43,11 @@ const Sidebar = (props) => {
                     color: "white",
                     backgroundColor: (theme) => `${theme.palette.primary.main}!important`,
                   }),
+                }}
+                onClick={() => {
+                  if (!lgUp) {
+                    props.onSidebarClose(); // Close sidebar on item click in mobile view
+                  }
                 }}
               >
                 <ListItemIcon

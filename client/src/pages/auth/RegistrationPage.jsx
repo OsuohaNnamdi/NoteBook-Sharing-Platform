@@ -21,12 +21,12 @@ const RegistrationPage = () => {
   const [email, setEmail] = useState("");
   const [schoolId, setSchoolId] = useState("");
   const [password, setPassword] = useState("");
-  const [accountType, setAccountType] = useState("STUDENT"); // Default to STUDENT
-  const [loading, setLoading] = useState(false); // State for loading spinner
+  const [accountType, setAccountType] = useState("STUDENT");
+  const [loading, setLoading] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setLoading(true); // Show spinner
+    setLoading(true);
 
     try {
       const response = await axios.post('http://localhost:8080/api/v1/register', {
@@ -36,9 +36,8 @@ const RegistrationPage = () => {
       Swal.fire({
         icon: 'success',
         title: 'Registration Successful',
-        text: 'You can now log in with your credentials.',
+        text: 'You can now log in.',
       }).then(() => {
-        // Optionally, redirect the user to the login page or reset the form
         setFullName("");
         setEmail("");
         setSchoolId("");
@@ -46,14 +45,13 @@ const RegistrationPage = () => {
         setAccountType("STUDENT");
       });
     } catch (error) {
-      console.error("Registration failed:", error);
       Swal.fire({
         icon: 'error',
         title: 'Registration Failed',
-        text: 'There was an issue with your registration. Please try again.',
+        text: 'Please try again.',
       });
     } finally {
-      setLoading(false); // Hide spinner
+      setLoading(false);
     }
   };
 
@@ -121,16 +119,18 @@ const RegistrationPage = () => {
                 <MenuItem value="LECTURER">Lecturer</MenuItem>
               </Select>
             </FormControl>
-            <Button
-              color="primary"
-              variant="contained"
-              type="submit"
-              disabled={loading} // Disable button while loading
-              sx={{ position: 'relative' }}
-            >
-              {loading && <CircularProgress size={24} sx={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }} />}
-              Register
-            </Button>
+            <Box display="flex" justifyContent="center" alignItems="center" sx={{ mt: 2 }}>
+              <Button
+                color="primary"
+                variant="contained"
+                type="submit"
+                disabled={loading}
+                sx={{ position: 'relative', minWidth: 100 }}
+              >
+                {loading && <CircularProgress size={24} sx={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }} />}
+                Register
+              </Button>
+            </Box>
           </form>
         </CardContent>
       </Card>

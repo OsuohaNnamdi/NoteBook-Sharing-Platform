@@ -14,4 +14,9 @@ public interface MessageService {
     List<Message> getMessages(String sender, String recipient);
 
     List<Message> getAllMessages();
+
+    void saveMessageNoFile(Message message);
+
+
+    void deleteById(Long id);
 }

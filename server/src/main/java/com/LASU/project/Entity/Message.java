@@ -21,14 +21,16 @@ public class Message {
     private String text;
     private String fileUrl;
     private LocalDateTime timestamp;
+    private boolean isRead;
     private String sender;
     private String recipient;
 
-    public Message(Long id, String text, String fileUrl, LocalDateTime timestamp, String sender, String recipient) {
+    public Message(Long id, String text, String fileUrl, LocalDateTime timestamp, boolean isRead, String sender, String recipient) {
         this.id = id;
         this.text = text;
         this.fileUrl = fileUrl;
         this.timestamp = timestamp;
+        this.isRead = isRead;
         this.sender = sender;
         this.recipient = recipient;
     }
@@ -58,6 +60,14 @@ public class Message {
 
     public void setFileUrl(String fileUrl) {
         this.fileUrl = fileUrl;
+    }
+
+    public boolean isRead() {
+        return isRead;
+    }
+
+    public void setRead(boolean read) {
+        isRead = read;
     }
 
     public LocalDateTime getTimestamp() {

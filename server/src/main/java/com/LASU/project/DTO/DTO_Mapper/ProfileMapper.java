@@ -16,6 +16,7 @@ public class ProfileMapper implements Function
     @Override
     public ProfileDTO apply(Profile profile) {
         return new ProfileDTO(
+                profile.getId(),
                 profile.getFullName(),
                 profile.getEmail(),
                 profile.getSchoolId(),

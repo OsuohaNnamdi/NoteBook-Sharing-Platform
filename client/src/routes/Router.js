@@ -7,6 +7,9 @@ import ChatPage from "../pages/StudentShare/ChatPage.jsx";
 import HomePage from "../pages/HomePage.jsx";
 import LoginPage from "../pages/auth/Login.jsx";
 import RegistrationPage from "../pages/auth/RegistrationPage.jsx";
+import StudentTable from "../pages/dashboard/studentDashboard/StudentTable.jsx";
+import CourseTable from "../pages/dashboard/studentDashboard/CourseTable.jsx";
+import AdminDashboard from "../pages/AdminDashboard.jsx";
 
 
 const FullLayout = lazy(() => import("../layouts/FullLayout/FullLayout.js"));
@@ -23,8 +26,11 @@ const ThemeRoutes = [
       { path: "/", element: <Navigate to="/home" /> },
       { path: "/home", exact: true, element: <HomePage /> },
       { path: "/search", exact: true, element: <SearchPage /> },
+      { path: "/admin", exact: true, element: <AdminDashboard /> },
       { path: "/chat/:email", exact: true, element: <ChatPage /> },
       { path: "/login", exact: true, element: <LoginPage /> },
+      { path: "/studentTable", exact: true, element: <StudentTable /> },
+      { path: "/courseTable", exact: true, element: <CourseTable /> },
       { path: "/add-course", exact: true, element: <AddCourse /> },
       { path: "/register", exact: true, element: <RegistrationPage /> },
       { path: "/dashboard", exact: true, element: <Dashboard /> },

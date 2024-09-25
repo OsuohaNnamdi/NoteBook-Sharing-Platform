@@ -20,7 +20,6 @@ const PageWrapper = experimentalStyled("div")(({ theme }) => ({
   display: "flex",
   flex: "1 1 auto",
   overflow: "hidden",
-
   backgroundColor: theme.palette.background.default,
   [theme.breakpoints.up("lg")]: {
     paddingTop: TopbarHeight,
@@ -31,10 +30,10 @@ const PageWrapper = experimentalStyled("div")(({ theme }) => ({
 }));
 
 const FullLayout = () => {
-  //
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
+
   return (
     <MainWrapper>
       <Header
@@ -43,14 +42,15 @@ const FullLayout = () => {
           backgroundColor: "#ffffff",
         }}
         toggleSidebar={() => setSidebarOpen(!isSidebarOpen)}
-        toggleMobileSidebar={() => setMobileSidebarOpen(true)}
+        toggleMobileSidebar={() => setMobileSidebarOpen(true)} // Toggle mobile sidebar
       />
 
-      <Sidebar
-        isSidebarOpen={isSidebarOpen}
-        isMobileSidebarOpen={isMobileSidebarOpen}
-        onSidebarClose={() => setMobileSidebarOpen(false)}
-      />
+        <Sidebar
+          isSidebarOpen={isSidebarOpen}
+          isMobileSidebarOpen={isMobileSidebarOpen}
+          onSidebarClose={() => setMobileSidebarOpen(false)}
+        />
+
 
       <PageWrapper>
         <Container
@@ -63,7 +63,6 @@ const FullLayout = () => {
           <Box sx={{ minHeight: "calc(100vh - 170px)" }}>
             <Outlet />
           </Box>
-          
         </Container>
       </PageWrapper>
     </MainWrapper>
