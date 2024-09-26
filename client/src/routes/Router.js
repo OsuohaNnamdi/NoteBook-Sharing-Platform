@@ -17,6 +17,7 @@ const Dashboard = lazy(() => import("../pages/dashboard/studentDashboard/Dashboa
 const LecturerDashboard = lazy(() => import("../pages/dashboard/LecturerDashboard/LecturerDashboard.jsx"));
 const AddCourse = lazy(() => import("../pages/dashboard/LecturerDashboard/AddCourse.jsx"));
 
+
 const ThemeRoutes = [
   {
     path: "/",
