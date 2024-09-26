@@ -25,7 +25,7 @@ const LoginPage = () => {
     setLoading(true); // Show spinner
   
     try {
-      const response = await axios.post('http://localhost:8080/api/v1/login', {
+      const response = await axios.post('https://note-api-vaqd.onrender.com/api/v1/login', {
         email,
         password
       });

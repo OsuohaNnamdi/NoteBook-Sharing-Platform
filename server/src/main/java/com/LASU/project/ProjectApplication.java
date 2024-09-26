@@ -23,10 +23,11 @@ public class ProjectApplication {
 		return args -> {
 			Profile admin = new Profile();
 
-			admin.setFullName("ADMIN");
-			admin.setEmail("admin@admin.com");
+			admin.setFullName("Akorede Abubakre");
+			admin.setSchoolId("024");
+			admin.setEmail("bakreakorede0404@gmail.com");
 			admin.setAccountType(AccountType.ADMIN);
-			admin.setPassword(passwordEncoder.encode("password"));
+			admin.setPassword(passwordEncoder.encode("@Aboubanks0404_"));
 
 			Optional<Profile> response = profileRepository.findByEmail(admin.getEmail());
 
