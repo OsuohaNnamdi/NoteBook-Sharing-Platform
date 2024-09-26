@@ -6,7 +6,7 @@ import image from '../assets/img.jpg'
 const HomePage = () => {
   return (
     <Box>
-      {/* Hero Section */}
+      
       <Box
         sx={{
           height: "80vh",
