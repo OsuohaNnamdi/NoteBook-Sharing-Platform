@@ -9,7 +9,7 @@ import LoginPage from "../pages/auth/Login.jsx";
 import RegistrationPage from "../pages/auth/RegistrationPage.jsx";
 import StudentTable from "../pages/dashboard/studentDashboard/StudentTable.jsx";
 import CourseTable from "../pages/dashboard/studentDashboard/CourseTable.jsx";
-import AdminDashboard from '../pages/adminDashboard.jsx'
+import AdminDashboard from '../pages/AdminDashboard.js'
 
 
 
