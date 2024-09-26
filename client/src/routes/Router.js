@@ -9,9 +9,9 @@ import LoginPage from "../pages/auth/Login.jsx";
 import RegistrationPage from "../pages/auth/RegistrationPage.jsx";
 import StudentTable from "../pages/dashboard/studentDashboard/StudentTable.jsx";
 import CourseTable from "../pages/dashboard/studentDashboard/CourseTable.jsx";
-import AdminDashboard from "../pages/AdminDashboard.jsx";
 
 
+const AdminDashboard = lazy(() => import("../pages/AdminDashboard.jsx"));
 const FullLayout = lazy(() => import("../layouts/FullLayout/FullLayout.js"));
 const Dashboard = lazy(() => import("../pages/dashboard/studentDashboard/Dashboard.jsx"));
 const LecturerDashboard = lazy(() => import("../pages/dashboard/LecturerDashboard/LecturerDashboard.jsx"));
