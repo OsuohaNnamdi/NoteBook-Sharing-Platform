@@ -11,7 +11,8 @@ import StudentTable from "../pages/dashboard/studentDashboard/StudentTable.jsx";
 import CourseTable from "../pages/dashboard/studentDashboard/CourseTable.jsx";
 
 
-const AdminDashboard = lazy(() => import("../pages/dashboard/studentDashboard/AdminDashboard.jsx"));
+
+const AdminDashboard = lazy(() => import("../pages/AdminDashboard.jsx"));
 const FullLayout = lazy(() => import("../layouts/FullLayout/FullLayout.js"));
 const Dashboard = lazy(() => import("../pages/dashboard/studentDashboard/Dashboard.jsx"));
 const LecturerDashboard = lazy(() => import("../pages/dashboard/LecturerDashboard/LecturerDashboard.jsx"));

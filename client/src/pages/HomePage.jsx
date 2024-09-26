@@ -45,7 +45,7 @@ const HomePage = () => {
           Explore Our Features
         </Typography>
         <Typography variant="body1" align="center" gutterBottom sx={{ mb: 4 }}>
-          Whether you're a student, lecturer, or admin, LEARNER offers the tools you need to succeed.
+          Whether you're a student, lecturer, or admin, The note sharing platform offers the tools you need to succeed.
         </Typography>
 
         <Grid container spacing={4} justifyContent="center">
@@ -102,7 +102,7 @@ const HomePage = () => {
       {/* Call to Action Section */}
       <Box sx={{ backgroundColor: "#f4f4f4", py: 4, textAlign: "center" }}>
         <Typography variant="body1" sx={{ mb: 2 }}>
-          Ready to join LEARNER? 
+          Ready to Start? 
         </Typography>
         <Button
           variant="contained"
