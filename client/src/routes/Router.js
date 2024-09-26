@@ -9,7 +9,7 @@ import LoginPage from "../pages/auth/Login.jsx";
 import RegistrationPage from "../pages/auth/RegistrationPage.jsx";
 import StudentTable from "../pages/dashboard/studentDashboard/StudentTable.jsx";
 import CourseTable from "../pages/dashboard/studentDashboard/CourseTable.jsx";
-import AdminDashboard from '../pages/AdminDashboard.js'
+//import AdminDashboard from '../pages/AdminDashboard.js'
 
 
 
@@ -28,7 +28,7 @@ const ThemeRoutes = [
       { path: "/", element: <Navigate to="/home" /> },
       { path: "/home", exact: true, element: <HomePage /> },
       { path: "/search", exact: true, element: <SearchPage /> },
-      { path: "/admin", exact: true, element: <AdminDashboard /> },
+      //{ path: "/admin", exact: true, element: <AdminDashboard /> },
       { path: "/chat/:email", exact: true, element: <ChatPage /> },
       { path: "/login", exact: true, element: <LoginPage /> },
       { path: "/studentTable", exact: true, element: <StudentTable /> },
