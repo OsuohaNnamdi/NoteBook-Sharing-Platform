@@ -11,6 +11,7 @@ export default function ChatPage() {
   const { user, hasAccess } = useAuth();
   const canSend = hasAccess('CHAT', 'WRITE');
 
+  
   const [individuals, setIndividuals] = useState([]);
   const [activeEmail, setActiveEmail] = useState(null);
   const [messages, setMessages] = useState([]);
