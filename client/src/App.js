@@ -3,7 +3,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import { baseTheme } from "./assets/global/Theme-variable";
 import FullLayout from "./layouts/FullLayout/FullLayout";
-import LoadingSpinner from "./components/LoadingSpinner"; // Add a fallback spinner for lazy loading
+import LoadingSpinner from "./components/Spinner";
 
 // Lazy loading all pages
 const PastQuestionForm = lazy(() => import("./pages/dashboard/studentDashboard/PastQuestionForm.jsx"));
