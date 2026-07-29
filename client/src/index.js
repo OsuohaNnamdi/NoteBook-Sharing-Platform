@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import App from "./App.jsx";
 import Spinner from "./components/Spinner";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
